@@ -1,37 +1,68 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from '../styles/Home.module.css';
+import { fetchWeather } from '../api/weather';
 
-const Home: NextPage = () => {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>TDY</title>
-        <meta name="description" content="Temperature Difference from Yesterday" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+export async function getStaticProps() {
+    const weathers = await fetchWeather();
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Temperature Difference from Yesterday
-        </h1>
-      </main>
+    console.log('hi');
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
-  )
+    console.log(weathers);
+    return {
+        props: {
+            weathers,
+        },
+    };
 }
 
-export default Home
+const Home: NextPage = (props) => {
+console.log(props)
+    return (
+        <div className={styles.container}>
+            <Head>
+                <title>TDY</title>
+                <meta
+                    name="description"
+                    content="Temperature Difference from Yesterday"
+                />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+
+
+            <main className={styles.main}>
+                <h1 className={styles.title}>
+                    Temperature Difference from Yesterday
+                </h1>
+                <button
+                    onClick={() => {
+                        weather();
+                    }}
+                >
+                    hi
+                </button>
+            </main>
+
+            <footer className={styles.footer}>
+                <a
+                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Powered by{' '}
+                    <span className={styles.logo}>
+                        <Image
+                            src="/vercel.svg"
+                            alt="Vercel Logo"
+                            width={72}
+                            height={16}
+                        />
+                    </span>
+                </a>
+            </footer>
+        </div>
+    );
+};
+
+export default Home;

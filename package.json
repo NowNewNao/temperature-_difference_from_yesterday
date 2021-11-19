@@ -6,19 +6,23 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "eslint": "npx eslint './src/**/*{.ts,.tsx}'"
+    "eslint": "npx eslint './src/**/*{.ts,.tsx}'",
+    "prettier": "prettier --write './src/**/*{.ts,.tsx}'"
   },
   "dependencies": {
+    "date-fns": "^2.25.0",
+    "global": "^4.4.0",
     "next": "12.0.2",
     "node-fetch": "^3.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@types/node": "16.11.6",
+    "@types/node": "^16.11.6",
     "@types/react": "17.0.33",
     "eslint": "7",
     "eslint-config-next": "12.0.2",
+    "prettier": "^2.4.1",
     "typescript": "4.4.4"
   }
 }
