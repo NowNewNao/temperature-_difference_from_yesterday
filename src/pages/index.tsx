@@ -7,14 +7,16 @@ import { fetchWeather } from '../api/weather';
 export async function getStaticProps() {
     const weathers = await fetchWeather();
 
-    console.log('hi');
-
-    console.log(weathers);
-    return {
-        props: {
-            weathers,
-        },
-    };
+    if (weathers) {
+        return;
+        {
+            props: {
+                weathers;
+            }
+        }
+    } else {
+        return { props: { key: null } };
+    }
 }
 
 const Home: NextPage = (props) => {
@@ -29,7 +31,6 @@ console.log(props)
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
 
             <main className={styles.main}>
                 <h1 className={styles.title}>
